@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashwini Portfolio</title>
+    <style>
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        background-color: #121212;
+        color: #f0f0f0;
+        line-height: 1.6;
+      }
+
+      header {
+        padding: 2rem;
+        text-align: center;
+        background-color: #1f1f1f;
+      }
+      header h1 {
+        font-size: 2.5rem;
+        color: #ff4081;
+      }
+      header p {
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+      }
+
+      section {
+        padding: 3rem 2rem;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      h2 {
+        color: #ff4081;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ff4081;
+        display: inline-block;
+      }
+
+      .projects,
+      .skills,
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .project,
+      .skill,
+      .contact-card {
+        background-color: #1f1f1f;
+        padding: 1rem;
+        border-radius: 8px;
+        flex: 1 1 250px;
+      }
+
+      .project a,
+      .contact-card a {
+        color: #ff4081;
+        text-decoration: none;
+      }
+
+      button {
+        padding: 0.8rem 1.5rem;
+        background-color: #ff4081;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      button:hover {
+        background-color: #e73370;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1>Ashwini Bhaskar</h1>
+      <p>
+        Full-Stack Developer | Building Modern Web Applications | H1B holder
+      </p>
+      <button onclick="downloadResume()">Download Resume</button>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a passionate full-stack developer learning modern technologies and
+        building apps to solve real-world problems. I enjoy creating responsive
+        and user-friendly web applications.
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>Portfolio Website</h3>
+          <p>A personal website to showcase my skills and projects.</p>
+          <p><strong>Tech Used:</strong> HTML, CSS, JS</p>
+          <a href="#">GitHub</a> | <a href="#">Live Demo</a>
+        </div>
+        <div class="project">
+          <h3>Todo App</h3>
+          <p>An interactive to-do app to manage tasks efficiently.</p>
+          <p><strong>Tech Used:</strong> React, CSS</p>
+          <a href="#">GitHub</a> | <a href="#">Live Demo</a>
+        </div>
+        <div class="project">
+          <h3>Blog Platform</h3>
+          <p>
+            A full-stack blog platform with authentication and CRUD features.
+          </p>
+          <p>
+            <strong>Tech Used:</strong> MERN (MongoDB, Express, React, Node)
+          </p>
+          <a href="#">GitHub</a> | <a href="#">Live Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">MongoDB</div>
+        <div class="skill">Git</div>
+        <div class="skill">REST API</div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div class="contact-card">
+          <p>
+            Email:
+            <a href="mailto:bashwini8545@gmail.com">bashwini8545@gmail</a>
+          </p>
+        </div>
+        <div class="contact-card">
+          <p>LinkedIn: <a href="#">linkedin.com/in/ashwini</a></p>
+        </div>
+        <div class="contact-card">
+          <p>
+            GitHub:
+            <a href="#"
+              >https://github.com/bashwini8545-eng/githumemc1/tree/main/src</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>&copy; 2025 Ashwini. All rights reserved.</footer>
+
+    <script>
+      localStorage.setItem("name", "Ashwini");
+      function downloadResume() {
+        const link = document.createElement("a");
+        link.href = "Ashwini_Resume.pdf"; // Replace with your resume path
+        link.download = "Ashwini_Resume.pdf";
+        link.click();
+      }
+    </script>
+  </body>
+</html>
