@@ -18,7 +18,7 @@ pipeline {
                 echo 'Testing EC2 connection...'
                 sshagent(['ec2-ssh-key']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-ip 'echo EC2 Connection Successful!'
+                        ssh -o StrictHostKeyChecking=no ec2-user@3.16.163.235 'echo EC2 Connection Successful!'
                     """
                 }
                 echo 'EC2 connection successful!'
