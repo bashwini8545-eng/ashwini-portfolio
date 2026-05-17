@@ -4,7 +4,6 @@ pipeline {
     environment {
         EC2_HOST = '3.16.163.235'
         EC2_USER = 'ec2-user'
-        KEY_PATH = 'C:\\ProgramData\\Jenkins\\.jenkins\\agility.pem'
     }
 
     stages {
