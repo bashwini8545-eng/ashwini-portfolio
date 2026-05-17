@@ -8,7 +8,7 @@ pipeline {
                 echo 'Checking out from GitHub...'
                 git branch: 'main',
                     credentialsId: 'github-creds',
-                    url: 'https://github.com/your-username/your-repo.git'
+                    url: 'https://github.com/bashwini8545-eng/ashwini-portfolio'
                 echo 'Checkout successful!'
             }
         }
