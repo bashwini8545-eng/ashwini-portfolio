@@ -21,17 +21,23 @@ pipeline {
 
         stage('Test EC2 Connection') {
                    steps {
-                withCredentials([sshUserPrivateKey(
-                    credentialsId: 'ec2-ssh-key',
-                    keyFileVariable: 'C:\\ProgramData\\Jenkins\\.jenkins\\agility.pem'
-                )]) {
-                    bat """
-                        icacls "%KEY_FILE%" /inheritance:r
-                        icacls "%KEY_FILE%" /remove "Everyone"
-                        icacls "%KEY_FILE%" /grant:r "NT AUTHORITY\\SYSTEM:(R)"
-                        ssh -o StrictHostKeyChecking=no -i "%KEY_FILE%" ec2-user@%EC2_HOST% "echo Connected!"
-                    """
-                }
+                        echo 'Testing EC2 connection...'
+                        withCredentials([file(
+                            credentialsId: 'ec2-ssh-key',
+                            variable: 'KEY_FILE'
+                        )]) {
+                            bat """
+                                copy "%KEY_FILE%" "%WORKSPACE%\\temp-key.pem"
+                                icacls "%WORKSPACE%\\temp-key.pem" /reset
+                                icacls "%WORKSPACE%\\temp-key.pem" /inheritance:r
+                                icacls "%WORKSPACE%\\temp-key.pem" /remove "Everyone"
+                                icacls "%WORKSPACE%\\temp-key.pem" /remove "BUILTIN\\Users"
+                                icacls "%WORKSPACE%\\temp-key.pem" /grant:r "NT AUTHORITY\\SYSTEM:(R)"
+                                ssh -o StrictHostKeyChecking=no -i "%WORKSPACE%\\temp-key.pem" %EC2_USER%@%EC2_HOST% "echo EC2 Connection Successful!"
+                                del "%WORKSPACE%\\temp-key.pem"
+                            """
+                        }
+                    }
             }
         }
 
