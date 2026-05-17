@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        EC2_HOST = 'your-ec2-public-ip'
+        EC2_USER = 'ec2-user'
+        KEY_PATH = 'C:\\ProgramData\\Jenkins\\.jenkins\\ec2-key.pem'
+    }
+
     stages {
 
         stage('Checkout from GitHub') {
@@ -16,12 +22,9 @@ pipeline {
         stage('Test EC2 Connection') {
             steps {
                 echo 'Testing EC2 connection...'
-                sshagent(['ec2-ssh-key']) {
-                    sh """
-                        ssh -o StrictHostKeyChecking=no ec2-user@3.16.163.235 'echo EC2 Connection Successful!'
-                    """
-                }
-                echo 'EC2 connection successful!'
+                bat """
+                    ssh -o StrictHostKeyChecking=no -i "%KEY_PATH%" %EC2_USER%@%EC2_HOST% "echo EC2 Connection Successful!"
+                """
             }
         }
 
